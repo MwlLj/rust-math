@@ -1,10 +1,8 @@
-pub fn u64AppendTou8arr(v: u64, arr: &mut Vec<u8>) {
+pub fn u64AppendTou8arr(v: u64, bit: u32, arr: &mut Vec<u8>) {
     let mut value = v;
-    let mut i = 0;
-    while value > 0 {
+    for i in 0..bit {
         arr.push((value % 256) as u8);
         value /= 256;
-        i += 1;
     }
 }
 
