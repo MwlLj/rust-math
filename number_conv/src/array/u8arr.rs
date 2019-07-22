@@ -14,7 +14,7 @@ pub fn u64Tou8arr(v: u64, arr: &mut [u8]) -> u32 {
         value /= 256;
         i += 1;
     }
-    i
+    i as u32
 }
 
 pub fn u8arrTou64(arr: &[u8], v: &mut u64) {
