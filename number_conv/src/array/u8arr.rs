@@ -20,11 +20,11 @@ pub fn u8NumberAppendTou8arr(v: u64, arr: &mut Vec<u8>) {
 }
 
 pub fn u32NumberAppendTou8arr(v: u64, arr: &mut Vec<u8>) {
-    number_append_to_u8arr!(v, arr, 32);
+    number_append_to_u8arr!(v, arr, 4);
 }
 
 pub fn u64NumberAppendTou8arr(v: u64, arr: &mut Vec<u8>) {
-    number_append_to_u8arr!(v, arr, 64);
+    number_append_to_u8arr!(v, arr, 8);
 }
 
 pub fn u64Tou8arr(v: u64, arr: &mut [u8]) -> u32 {
