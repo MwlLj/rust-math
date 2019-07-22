@@ -6,6 +6,27 @@ pub fn u64AppendTou8arr(v: u64, bit: u32, arr: &mut Vec<u8>) {
     }
 }
 
+macro_rules! number_append_to_u8arr {
+    ($v:ident, $arr:ident, $bit:expr) => ({
+        let mut buf = [0; $bit];
+        let bufLen = u64Tou8arr($v, &mut buf);
+        u64AppendTou8arr(bufLen as u64, $bit, $arr);
+        $arr.extend_from_slice(&buf[..(bufLen as usize)]);
+    })
+}
+
+pub fn u8NumberAppendTou8arr(v: u64, arr: &mut Vec<u8>) {
+    number_append_to_u8arr!(v, arr, 1);
+}
+
+pub fn u32NumberAppendTou8arr(v: u64, arr: &mut Vec<u8>) {
+    number_append_to_u8arr!(v, arr, 32);
+}
+
+pub fn u64NumberAppendTou8arr(v: u64, arr: &mut Vec<u8>) {
+    number_append_to_u8arr!(v, arr, 64);
+}
+
 pub fn u64Tou8arr(v: u64, arr: &mut [u8]) -> u32 {
     let mut value = v;
     let mut i = 0;
