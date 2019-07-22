@@ -10,7 +10,7 @@ macro_rules! number_append_to_u8arr {
     ($v:ident, $arr:ident, $bit:expr) => ({
         let mut buf = [0; $bit];
         let bufLen = u64Tou8arr($v, &mut buf);
-        u64AppendTou8arr(bufLen as u64, $bit, $arr);
+        u64AppendTou8arr(bufLen as u64, 1, $arr);
         $arr.extend_from_slice(&buf[..(bufLen as usize)]);
     })
 }
@@ -96,4 +96,11 @@ fn u8arrTou64ByBaseTest() {
     let mut value = 0;
     u8arrTou64ByBase(&arr, &mut value, 8);
     assert_eq!(1000, value);
+}
+
+#[test]
+fn u32NumberAppendTou8arrTest() {
+    let mut arr = Vec::new();
+    u32NumberAppendTou8arr(0, &mut arr);
+    assert_eq!(arr, vec![0]);
 }
