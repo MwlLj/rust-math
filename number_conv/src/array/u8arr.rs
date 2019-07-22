@@ -6,7 +6,7 @@ pub fn u64AppendTou8arr(v: u64, bit: u32, arr: &mut Vec<u8>) {
     }
 }
 
-pub fn u64Tou8arr(v: u64, arr: &mut [u8]) {
+pub fn u64Tou8arr(v: u64, arr: &mut [u8]) -> u32 {
     let mut value = v;
     let mut i = 0;
     while value > 0 {
@@ -14,6 +14,7 @@ pub fn u64Tou8arr(v: u64, arr: &mut [u8]) {
         value /= 256;
         i += 1;
     }
+    i
 }
 
 pub fn u8arrTou64(arr: &[u8], v: &mut u64) {
