@@ -1,4 +1,5 @@
 pub fn u64AppendTou8arr(v: u64, bit: u32, arr: &mut Vec<u8>) {
+    arr.clear();
     let mut value = v;
     for i in 0..bit {
         arr.push((value % 256) as u8);
@@ -39,6 +40,7 @@ pub fn u64Tou8arr(v: u64, arr: &mut [u8]) -> u32 {
 }
 
 pub fn u8arrTou64(arr: &[u8], v: &mut u64) {
+    *v = 0;
     for (index, item) in arr.iter().enumerate() {
         *v += *item as u64 * 256_u64.pow(index as u32) as u64;
     }
@@ -56,6 +58,7 @@ pub fn u64Tou8arrByBase(v: u64, arr: &mut [u8], byte: u32) {
 }
 
 pub fn u8arrTou64ByBase(arr: &[u8], v: &mut u64, byte: u32) {
+    *v = 0;
     let b = 2_u64.pow(byte);
     for (index, item) in arr.iter().enumerate() {
         *v += *item as u64 * b.pow(index as u32) as u64;
