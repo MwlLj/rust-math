@@ -15,6 +15,8 @@ macro_rules! number_append_to_u8arr {
     })
 }
 
+//! first: calc u8 number length
+//! second: append u8 number to arr
 pub fn u8NumberAppendTou8arr(v: u64, arr: &mut Vec<u8>) {
     number_append_to_u8arr!(v, arr, 1);
 }
