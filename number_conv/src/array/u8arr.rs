@@ -19,6 +19,10 @@ pub fn u8NumberAppendTou8arr(v: u64, arr: &mut Vec<u8>) {
     number_append_to_u8arr!(v, arr, 1);
 }
 
+pub fn u16NumberAppendTou8arr(v: u64, arr: &mut Vec<u8>) {
+    number_append_to_u8arr!(v, arr, 2);
+}
+
 pub fn u32NumberAppendTou8arr(v: u64, arr: &mut Vec<u8>) {
     number_append_to_u8arr!(v, arr, 4);
 }
