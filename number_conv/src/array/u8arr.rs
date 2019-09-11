@@ -15,8 +15,8 @@ macro_rules! number_append_to_u8arr {
     })
 }
 
-//! first: calc u8 number length
-//! second: append u8 number to arr
+/// first: calc u8 number length
+/// second: append u8 number to arr
 pub fn u8NumberAppendTou8arr(v: u64, arr: &mut Vec<u8>) {
     number_append_to_u8arr!(v, arr, 1);
 }
@@ -48,6 +48,20 @@ pub fn u8arrTou64(arr: &[u8], v: &mut u64) {
     *v = 0;
     for (index, item) in arr.iter().enumerate() {
         *v += *item as u64 * 256_u64.pow(index as u32) as u64;
+    }
+}
+
+pub fn u8arrTou16(arr: &[u8], v: &mut u16) {
+    *v = 0;
+    for (index, item) in arr.iter().enumerate() {
+        *v += *item as u16 * 256_u16.pow(index as u32) as u16;
+    }
+}
+
+pub fn u8arrTou32(arr: &[u8], v: &mut u32) {
+    *v = 0;
+    for (index, item) in arr.iter().enumerate() {
+        *v += *item as u32 * 256_u32.pow(index as u32) as u32;
     }
 }
 
@@ -85,6 +99,24 @@ fn u8arrTou64Test() {
     let arr = [232, 3, 0, 0, 0, 0, 0, 0];
     let mut value = 0;
     u8arrTou64(&arr, &mut value);
+    assert_eq!(1000, value);
+}
+
+#[test]
+// #[ignore]
+fn u8arrTou16Test() {
+    let arr = [232, 3];
+    let mut value = 0;
+    u8arrTou16(&arr, &mut value);
+    assert_eq!(1000, value);
+}
+
+#[test]
+// #[ignore]
+fn u8arrTou32Test() {
+    let arr = [232, 3, 0, 0];
+    let mut value = 0;
+    u8arrTou32(&arr, &mut value);
     assert_eq!(1000, value);
 }
 
